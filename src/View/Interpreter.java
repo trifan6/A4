@@ -223,15 +223,15 @@ public class Interpreter
                                         new CompStmt(
                                                 new NewStmt("a", new VarExp("v")),
                                                 new CompStmt(
-                                                        new NewStmt("v", new ValueExp(new IntValue(30))), // makes previous "v" unreachable
+                                                        new NewStmt("v", new ValueExp(new IntValue(30))),
                                                         new PrintStmt(
                                                                 new ArithExp("+",
                                                                         new ReadHeapExp(
                                                                                 new ReadHeapExp(
-                                                                                        new VarExp("a")      // rH(rH(a))
+                                                                                        new VarExp("a")
                                                                                 )
                                                                         ),
-                                                                        new ValueExp(new IntValue(0)) // force int printing
+                                                                        new ValueExp(new IntValue(0))
                                                                 )
                                                         )
                                                 )
