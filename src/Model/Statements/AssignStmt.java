@@ -29,7 +29,7 @@ public class AssignStmt implements IStmt
             throw new KeyNotFoundException(id);
         }
 
-        Value val = exp.eval(symTable);
+        Value val = exp.eval(symTable, state.getHeap());
         Value varVal = symTable.get(id);
 
         if(!val.getType().equals(varVal.getType()))

@@ -12,13 +12,15 @@ public class PrgState
     private final MyIDictionary<String, Value> symTable;
     private final MyIList<Value> out;
     private MyITable fileTable;
+    private MyIHeap<Integer, Value> heap;
 
-    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Value> symTable, MyIList<Value> out, MyITable fileTable,IStmt originalProgram)
+    public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Value> symTable, MyIList<Value> out, MyITable fileTable, MyIHeap<Integer, Value> heap,IStmt originalProgram)
     {
         this.exeStack = exeStack;
         this.symTable = symTable;
         this.out = out;
         this.fileTable = fileTable;
+        this.heap = heap;
         this.exeStack.push(originalProgram.deepCopy());
     }
 
@@ -42,15 +44,25 @@ public class PrgState
         return fileTable;
     }
 
+    public MyIHeap<Integer, Value> getHeap()
+    {
+        return heap;
+    }
+
     public void setFileTable(MyITable table)
     {
         this.fileTable = table;
     }
 
+    public void setHeap(MyIHeap<Integer, Value> heap)
+    {
+        this.heap = heap;
+    }
+
     @Override
     public String toString()
     {
-        return "ExeStack: " + exeStack.toString() + "\n" + "SymTable: " + symTable.toString() + "\n" + "Out: " + out.toString() + "\n" + "FileTable: " + fileTable.toString();
+        return "ExeStack: " + exeStack.toString() + "\n" + "SymTable: " + symTable.toString() + "\n" + "Out: " + out.toString() + "\n" + "FileTable: " + fileTable.toString() + "\n" + "Heap: " + heap.toString();
     }
 
 }

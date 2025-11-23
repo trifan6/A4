@@ -3,18 +3,21 @@ ExeStack:
 SymTable
 Out:
 FileTable:
+Heap:
 ExeStack:
 string varf
 (varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))))
 SymTable
 Out:
 FileTable:
+Heap:
 ExeStack:
 (varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))))
 SymTable
 varf: 
 Out:
 FileTable:
+Heap:
 ExeStack:
 varf=test.in
 (OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))
@@ -22,12 +25,14 @@ SymTable
 varf: 
 Out:
 FileTable:
+Heap:
 ExeStack:
 (OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))
 SymTable
 varf: test.in
 Out:
 FileTable:
+Heap:
 ExeStack:
 OpenRFile: varf
 (int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))
@@ -35,6 +40,7 @@ SymTable
 varf: test.in
 Out:
 FileTable:
+Heap:
 ExeStack:
 (int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))
 SymTable
@@ -42,6 +48,7 @@ varf: test.in
 Out:
 FileTable:
 test.in
+Heap:
 ExeStack:
 int varc
 (readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))
@@ -50,6 +57,7 @@ varf: test.in
 Out:
 FileTable:
 test.in
+Heap:
 ExeStack:
 (readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))
 SymTable
@@ -58,6 +66,7 @@ varc: 0
 Out:
 FileTable:
 test.in
+Heap:
 ExeStack:
 readFile(varf,varc)
 (print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))
@@ -67,6 +76,7 @@ varc: 0
 Out:
 FileTable:
 test.in
+Heap:
 ExeStack:
 (print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))
 SymTable
@@ -75,6 +85,7 @@ varc: 15
 Out:
 FileTable:
 test.in
+Heap:
 ExeStack:
 print(varc)
 (readFile(varf,varc),(print(varc),closeRFile(varf)))
@@ -84,6 +95,7 @@ varc: 15
 Out:
 FileTable:
 test.in
+Heap:
 ExeStack:
 (readFile(varf,varc),(print(varc),closeRFile(varf)))
 SymTable
@@ -93,6 +105,7 @@ Out:
 15
 FileTable:
 test.in
+Heap:
 ExeStack:
 readFile(varf,varc)
 (print(varc),closeRFile(varf))
@@ -103,6 +116,7 @@ Out:
 15
 FileTable:
 test.in
+Heap:
 ExeStack:
 (print(varc),closeRFile(varf))
 SymTable
@@ -112,6 +126,7 @@ Out:
 15
 FileTable:
 test.in
+Heap:
 ExeStack:
 print(varc)
 closeRFile(varf)
@@ -122,6 +137,7 @@ Out:
 15
 FileTable:
 test.in
+Heap:
 ExeStack:
 closeRFile(varf)
 SymTable
@@ -132,6 +148,7 @@ Out:
 50
 FileTable:
 test.in
+Heap:
 ExeStack:
 SymTable
 varf: test.in
@@ -140,3 +157,4 @@ Out:
 15
 50
 FileTable:
+Heap:

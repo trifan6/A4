@@ -2,6 +2,7 @@ package Model.Expressions;
 
 import Model.ADT.MyIDictionary;
 import Exceptions.MyException;
+import Model.ADT.MyIHeap;
 import Model.Types.IntType;
 import Model.Values.BoolValue;
 import Model.Values.Value;
@@ -20,13 +21,13 @@ public class RelExp implements Exp {
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> symTable) throws MyException
+    public Value eval(MyIDictionary<String, Value> symTable, MyIHeap<Integer, Value> heap) throws MyException
     {
-        Value v1 = exp1.eval(symTable);
+        Value v1 = exp1.eval(symTable, heap);
         if (!(v1.getType() instanceof IntType))
             throw new MyException("First operand is not an integer!");
 
-        Value v2 = exp2.eval(symTable);
+        Value v2 = exp2.eval(symTable, heap);
         if (!(v2.getType() instanceof IntType))
             throw new MyException("Second operand is not an integer!");
 

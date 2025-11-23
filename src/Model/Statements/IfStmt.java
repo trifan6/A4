@@ -28,7 +28,7 @@ public class IfStmt implements IStmt
         MyIStack<IStmt> stack = state.getExeStack();
         MyIDictionary<String, Value> symTable = state.getSymTable();
 
-        Value cond = exp.eval(symTable);
+        Value cond = exp.eval(symTable, state.getHeap());
         if(!cond.getType().equals(new BoolType()))
         {
             throw new MyException("Condition is not boolean");

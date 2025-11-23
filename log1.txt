@@ -1,30 +1,23 @@
 ExeStack:
-print(42)
-SymTable
-Out:
-FileTable:
-ExeStack:
-SymTable
-Out:
-42
-FileTable:
-ExeStack:
 (int v,(v=2,print(v)))
 SymTable
 Out:
 FileTable:
+Heap:
 ExeStack:
 int v
 (v=2,print(v))
 SymTable
 Out:
 FileTable:
+Heap:
 ExeStack:
 (v=2,print(v))
 SymTable
 v: 0
 Out:
 FileTable:
+Heap:
 ExeStack:
 v=2
 print(v)
@@ -32,51 +25,18 @@ SymTable
 v: 0
 Out:
 FileTable:
+Heap:
 ExeStack:
 print(v)
 SymTable
 v: 2
 Out:
 FileTable:
+Heap:
 ExeStack:
 SymTable
 v: 2
 Out:
 2
 FileTable:
-ExeStack:
-(int v,(v=2,print(v)))
-SymTable
-Out:
-FileTable:
-ExeStack:
-int v
-(v=2,print(v))
-SymTable
-Out:
-FileTable:
-ExeStack:
-(v=2,print(v))
-SymTable
-v: 0
-Out:
-FileTable:
-ExeStack:
-v=2
-print(v)
-SymTable
-v: 0
-Out:
-FileTable:
-ExeStack:
-print(v)
-SymTable
-v: 2
-Out:
-FileTable:
-ExeStack:
-SymTable
-v: 2
-Out:
-2
-FileTable:
+Heap:

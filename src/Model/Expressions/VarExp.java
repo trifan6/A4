@@ -2,6 +2,7 @@ package Model.Expressions;
 
 import Model.ADT.MyIDictionary;
 import Exceptions.MyException;
+import Model.ADT.MyIHeap;
 import Model.Values.Value;
 
 public class VarExp implements Exp
@@ -14,7 +15,7 @@ public class VarExp implements Exp
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> dict) throws MyException
+    public Value eval(MyIDictionary<String, Value> dict, MyIHeap<Integer, Value> heap) throws MyException
     {
         if(!dict.isDefined(this.id))
         {

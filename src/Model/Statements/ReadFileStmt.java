@@ -36,7 +36,7 @@ public class ReadFileStmt implements IStmt
         if (!(varVal.getType().equals(new IntType())))
             throw new MyException("readFile: variable " + varName + " is not of type int.");
 
-        Value v = exp.eval(symTable);
+        Value v = exp.eval(symTable, state.getHeap());
         if (!(v instanceof StringValue))
             throw new MyException("readFile: filename expression does not evaluate to a string.");
         StringValue sVal = (StringValue) v;

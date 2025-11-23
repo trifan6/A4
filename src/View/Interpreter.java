@@ -2,14 +2,12 @@ package View;
 
 import Controller.Controller;
 import Model.ADT.*;
-import Model.Expressions.ArithExp;
-import Model.Expressions.RelExp;
-import Model.Expressions.ValueExp;
-import Model.Expressions.VarExp;
+import Model.Expressions.*;
 import Model.PrgState;
 import Model.Statements.*;
 import Model.Types.BoolType;
 import Model.Types.IntType;
+import Model.Types.RefType;
 import Model.Types.StringType;
 import Model.Values.BoolValue;
 import Model.Values.IntValue;
@@ -36,6 +34,7 @@ public class Interpreter
                 new MyDictionary<>(),
                 new MyList<>(),
                 new MyTable(),
+                new MyHeap(),
                 ex1
         );
         IRepository repo1 = new Repository(prg1, "log1.txt");
@@ -71,6 +70,7 @@ public class Interpreter
                 new MyDictionary<>(),
                 new MyList<>(),
                 new MyTable(),
+                new MyHeap(),
                 ex2
         );
         IRepository repo2 = new Repository(prg2, "log2.txt");
@@ -100,6 +100,7 @@ public class Interpreter
                 new MyDictionary<>(),
                 new MyList<>(),
                 new MyTable(),
+                new MyHeap(),
                 ex3
         );
 
@@ -138,6 +139,7 @@ public class Interpreter
                 new MyDictionary<>(),
                 new MyList<>(),
                 new MyTable(),
+                new MyHeap(),
                 ex4
         );
 
@@ -172,21 +174,53 @@ public class Interpreter
                 new MyDictionary<>(),
                 new MyList<>(),
                 new MyTable(),
+                new MyHeap(),
                 ex5
         );
 
         IRepository repo5 = new Repository(prg5, "log5.txt");
         Controller ctr5 = new Controller(repo5);
 
+        IStmt ex6 = new CompStmt(
+                new VarDeclStmt("v", new RefType(new IntType())),
+                new CompStmt(
+                        new NewStmt("v", new ValueExp(new IntValue(20))),
+                        new CompStmt(
+                                new PrintStmt(new ReadHeapExp(new VarExp("v"))),
+                                new CompStmt(
+                                        new WriteHeapStmt("v", new ValueExp(new IntValue(30))),
+                                        new PrintStmt(
+                                                new ArithExp("+",
+                                                        new ReadHeapExp(new VarExp("v")),
+                                                        new ValueExp(new IntValue(5))
+                                                )
+                                        )
+                                )
+                        )
+                )
+        );
 
+
+        PrgState prg6 = new PrgState(
+                new MyStack<>(),
+                new MyDictionary<>(),
+                new MyList<>(),
+                new MyTable(),
+                new MyHeap(),
+                ex6
+        );
+
+        IRepository repo6 = new Repository(prg6, "log6.txt");
+        Controller ctr6 = new Controller(repo6);
 
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1", ex1.toString(), ctr1));
         menu.addCommand(new RunExample("2", ex2.toString(), ctr2));
-        menu.addCommand(new RunExample("3", ex3.toString(), ctr4));
+        menu.addCommand(new RunExample("3", ex3.toString(), ctr3));
         menu.addCommand(new RunExample("4", ex4.toString(), ctr4));
         menu.addCommand(new RunExample("5", ex5.toString(), ctr5));
+        menu.addCommand(new RunExample("6", ex6.toString(), ctr6));
 
         menu.show();
     }

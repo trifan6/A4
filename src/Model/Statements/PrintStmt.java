@@ -23,7 +23,7 @@ public class PrintStmt implements IStmt
         MyIList<Value> out = state.getOut();
         MyIDictionary<String, Value> symTable = state.getSymTable();
 
-        Value val = exp.eval(symTable);
+        Value val = exp.eval(symTable, state.getHeap());
         out.add(val);
         return state;
     }

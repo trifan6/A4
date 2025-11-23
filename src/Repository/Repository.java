@@ -72,6 +72,12 @@ public class Repository implements IRepository
             for (String key : state.getFileTable().getAll().keySet()) {
                 logFile.println(key);
             }
+
+            logFile.println("Heap:");
+            for (Integer key : state.getHeap().keySet())
+            {
+                logFile.println(key + " -> " + state.getHeap().get(key));
+            }
             logFile.close();
         }
         catch (IOException e)

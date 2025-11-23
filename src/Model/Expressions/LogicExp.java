@@ -2,6 +2,7 @@ package Model.Expressions;
 
 import Model.ADT.MyIDictionary;
 import Exceptions.MyException;
+import Model.ADT.MyIHeap;
 import Model.Types.BoolType;
 import Model.Values.BoolValue;
 import Model.Values.Value;
@@ -20,13 +21,13 @@ public class LogicExp implements Exp
     }
 
     @Override
-    public Value eval(MyIDictionary<String, Value> tbl) throws MyException
+    public Value eval(MyIDictionary<String, Value> tbl, MyIHeap<Integer, Value> heap) throws MyException
     {
-        Value v1 = e1.eval(tbl);
+        Value v1 = e1.eval(tbl, heap);
         if (!v1.getType().equals(new BoolType()))
             throw new MyException("First operand is not a boolean");
 
-        Value v2 = e2.eval(tbl);
+        Value v2 = e2.eval(tbl, heap);
         if (!v2.getType().equals(new BoolType()))
             throw new MyException("Second operand is not a boolean");
 

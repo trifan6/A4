@@ -1,37 +1,87 @@
 ExeStack:
-(string varf,(varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))))
+(bool a,(int v,(a=true,(if(a) then(v=2) else(v=3),print(v)))))
 SymTable
 Out:
 FileTable:
+Heap:
 ExeStack:
-string varf
-(varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))))
+bool a
+(int v,(a=true,(if(a) then(v=2) else(v=3),print(v))))
 SymTable
 Out:
 FileTable:
+Heap:
 ExeStack:
-(varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))))
+(int v,(a=true,(if(a) then(v=2) else(v=3),print(v))))
 SymTable
-varf: 
+a: false
 Out:
 FileTable:
+Heap:
 ExeStack:
-varf=test.in
-(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))
+int v
+(a=true,(if(a) then(v=2) else(v=3),print(v)))
 SymTable
-varf: 
+a: false
 Out:
 FileTable:
+Heap:
 ExeStack:
-(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))
+(a=true,(if(a) then(v=2) else(v=3),print(v)))
 SymTable
-varf: test.in
+a: false
+v: 0
 Out:
 FileTable:
+Heap:
 ExeStack:
-OpenRFile: varf
-(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))
+a=true
+(if(a) then(v=2) else(v=3),print(v))
 SymTable
-varf: test.in
+a: false
+v: 0
 Out:
 FileTable:
+Heap:
+ExeStack:
+(if(a) then(v=2) else(v=3),print(v))
+SymTable
+a: true
+v: 0
+Out:
+FileTable:
+Heap:
+ExeStack:
+if(a) then(v=2) else(v=3)
+print(v)
+SymTable
+a: true
+v: 0
+Out:
+FileTable:
+Heap:
+ExeStack:
+v=2
+print(v)
+SymTable
+a: true
+v: 0
+Out:
+FileTable:
+Heap:
+ExeStack:
+print(v)
+SymTable
+a: true
+v: 2
+Out:
+FileTable:
+Heap:
+ExeStack:
+SymTable
+a: true
+v: 2
+Out:
+2
+FileTable:
+Heap:

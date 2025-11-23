@@ -23,7 +23,7 @@ public class OpenRFileStmt implements IStmt
     @Override
     public PrgState execute(PrgState state) throws MyException
     {
-        Value v = exp.eval(state.getSymTable());
+        Value v = exp.eval(state.getSymTable(), state.getHeap());
         if(!(v instanceof StringValue))
         {
             throw new MyException("OpenRFile: expression is not a string)");
