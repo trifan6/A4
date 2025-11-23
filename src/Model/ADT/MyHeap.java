@@ -11,12 +11,11 @@ import java.util.Set;
 public class MyHeap implements MyIHeap<Integer, Value>
 {
     private final Map<Integer, Value> heap;
-    private int freeLocation;
+    private int freeLocation = 1;
 
     public MyHeap()
     {
         heap = new HashMap<>();
-        freeLocation = 1;
     }
 
     @Override

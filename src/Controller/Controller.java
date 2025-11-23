@@ -5,7 +5,13 @@ import Exceptions.MyException;
 import Model.ADT.MyIStack;
 import Model.PrgState;
 import Model.Statements.IStmt;
+import Model.Values.RefValue;
+import Model.Values.Value;
 import Repository.IRepository;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 public class Controller
 {
@@ -50,6 +56,12 @@ public class Controller
             oneStep(prog);
             repo.logPrgStateExec();
 
+            List<Integer> symTableAddress = getAddressFromSymTable(prog.getSymTable().getAll().values());
+            Map<Integer, Value> newHeap = safeGarbageCollector(symTableAddress, prog.getHeap().getContent());
+            prog.getHeap().setContent(newHeap);
+
+            repo.logPrgStateExec();
+
             if(displayFlag)
             {
                 System.out.println("After step:\n" + prog.toString());
@@ -60,6 +72,54 @@ public class Controller
         {
             System.out.println("Final state:\n" + prog.toString());
         }
+    }
+
+    private List<Integer> getAddressFromSymTable(Collection<Value> symTableValues)
+    {
+        return symTableValues.stream()
+                .filter(v -> v instanceof RefValue)
+                .map(v -> ((RefValue)v).getAddress())
+                .collect(Collectors.toList());
+    }
+
+    private Set<Integer> getReachableAddresses(List<Integer> symTableAddresses, Map<Integer, Value> heap)
+    {
+        Set<Integer> reachable = new HashSet<>();
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        for(Integer a : symTableAddresses)
+        {
+            if(a != null && a!= 0 && heap.containsKey(a))
+            {
+                reachable.add(a);
+                stack.push(a);
+            }
+        }
+
+        while(!stack.isEmpty())
+        {
+            Integer a = stack.pop();
+            Value val = heap.get(a);
+            if(val instanceof RefValue)
+            {
+                int nestedAddr = ((RefValue)val).getAddress();
+                if(nestedAddr != 0 && heap.containsKey(nestedAddr) && !reachable.contains(nestedAddr))
+                {
+                    reachable.add(nestedAddr);
+                    stack.push(nestedAddr);
+                }
+            }
+        }
+        return reachable;
+    }
+
+    private Map<Integer, Value> safeGarbageCollector(List<Integer> symTableAddresses, Map<Integer, Value> heap)
+    {
+        Set<Integer> reachable = getReachableAddresses(symTableAddresses, heap);
+
+        return heap.entrySet().stream()
+                .filter(e -> reachable.contains(e.getKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
 }

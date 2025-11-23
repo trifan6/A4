@@ -213,6 +213,78 @@ public class Interpreter
         IRepository repo6 = new Repository(prg6, "log6.txt");
         Controller ctr6 = new Controller(repo6);
 
+        IStmt ex7 =
+                new CompStmt(
+                        new VarDeclStmt("v", new RefType(new IntType())),
+                        new CompStmt(
+                                new NewStmt("v", new ValueExp(new IntValue(20))),
+                                new CompStmt(
+                                        new VarDeclStmt("a", new RefType(new RefType(new IntType()))),
+                                        new CompStmt(
+                                                new NewStmt("a", new VarExp("v")),
+                                                new CompStmt(
+                                                        new NewStmt("v", new ValueExp(new IntValue(30))), // makes previous "v" unreachable
+                                                        new PrintStmt(
+                                                                new ArithExp("+",
+                                                                        new ReadHeapExp(
+                                                                                new ReadHeapExp(
+                                                                                        new VarExp("a")      // rH(rH(a))
+                                                                                )
+                                                                        ),
+                                                                        new ValueExp(new IntValue(0)) // force int printing
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                );
+
+        PrgState prg7 = new PrgState(
+                new MyStack<>(),
+                new MyDictionary<>(),
+                new MyList<>(),
+                new MyTable(),
+                new MyHeap(),
+                ex7
+        );
+
+        IRepository repo7 = new Repository(prg7, "log7_gc.txt");
+        Controller ctr7 = new Controller(repo7);
+
+        IStmt ex8 =
+                new CompStmt(
+                        new VarDeclStmt("v", new IntType()),
+                        new CompStmt(
+                                new AssignStmt("v", new ValueExp(new IntValue(4))),
+
+                                new CompStmt(
+                                        new WhileStmt(
+                                                new RelExp(new VarExp("v"), new ValueExp(new IntValue(0)), ">"),
+                                                new CompStmt(
+                                                        new PrintStmt(new VarExp("v")),
+                                                        new AssignStmt("v",
+                                                                new ArithExp("-",
+                                                                        new VarExp("v"),
+                                                                        new ValueExp(new IntValue(1))))
+                                                )
+                                        ),
+                                        new PrintStmt(new VarExp("v"))
+                                )
+                        )
+                );
+
+        PrgState prg8 = new PrgState(
+                new MyStack<>(),
+                new MyDictionary<>(),
+                new MyList<>(),
+                new MyTable(),
+                new MyHeap(),
+                ex8
+        );
+        IRepository repo8 = new Repository(prg8, "log8.txt");
+        Controller ctr8 = new Controller(repo8);
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1", ex1.toString(), ctr1));
@@ -221,6 +293,9 @@ public class Interpreter
         menu.addCommand(new RunExample("4", ex4.toString(), ctr4));
         menu.addCommand(new RunExample("5", ex5.toString(), ctr5));
         menu.addCommand(new RunExample("6", ex6.toString(), ctr6));
+        menu.addCommand(new RunExample("7", ex7.toString(), ctr7));
+        menu.addCommand(new RunExample("8", ex8.toString(), ctr8));
+
 
         menu.show();
     }
