@@ -1,0 +1,37 @@
+ExeStack:
+(string varf,(varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))))
+SymTable
+Out:
+FileTable:
+ExeStack:
+string varf
+(varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))))
+SymTable
+Out:
+FileTable:
+ExeStack:
+(varf=test.in,(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))))
+SymTable
+varf: 
+Out:
+FileTable:
+ExeStack:
+varf=test.in
+(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))
+SymTable
+varf: 
+Out:
+FileTable:
+ExeStack:
+(OpenRFile: varf,(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))))
+SymTable
+varf: test.in
+Out:
+FileTable:
+ExeStack:
+OpenRFile: varf
+(int varc,(readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))))
+SymTable
+varf: test.in
+Out:
+FileTable:

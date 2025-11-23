@@ -1,0 +1,120 @@
+ExeStack:
+(int a,(int v,(a=2,if(a == 2) then(print(true)) else(print(false)))))
+SymTable
+Out:
+FileTable:
+ExeStack:
+int a
+(int v,(a=2,if(a == 2) then(print(true)) else(print(false))))
+SymTable
+Out:
+FileTable:
+ExeStack:
+(int v,(a=2,if(a == 2) then(print(true)) else(print(false))))
+SymTable
+a: 0
+Out:
+FileTable:
+ExeStack:
+int v
+(a=2,if(a == 2) then(print(true)) else(print(false)))
+SymTable
+a: 0
+Out:
+FileTable:
+ExeStack:
+(a=2,if(a == 2) then(print(true)) else(print(false)))
+SymTable
+a: 0
+v: 0
+Out:
+FileTable:
+ExeStack:
+a=2
+if(a == 2) then(print(true)) else(print(false))
+SymTable
+a: 0
+v: 0
+Out:
+FileTable:
+ExeStack:
+if(a == 2) then(print(true)) else(print(false))
+SymTable
+a: 2
+v: 0
+Out:
+FileTable:
+ExeStack:
+print(true)
+SymTable
+a: 2
+v: 0
+Out:
+FileTable:
+ExeStack:
+SymTable
+a: 2
+v: 0
+Out:
+true
+FileTable:
+ExeStack:
+(int a,(int v,(a=2,if(a == 2) then(print(true)) else(print(false)))))
+SymTable
+Out:
+FileTable:
+ExeStack:
+int a
+(int v,(a=2,if(a == 2) then(print(true)) else(print(false))))
+SymTable
+Out:
+FileTable:
+ExeStack:
+(int v,(a=2,if(a == 2) then(print(true)) else(print(false))))
+SymTable
+a: 0
+Out:
+FileTable:
+ExeStack:
+int v
+(a=2,if(a == 2) then(print(true)) else(print(false)))
+SymTable
+a: 0
+Out:
+FileTable:
+ExeStack:
+(a=2,if(a == 2) then(print(true)) else(print(false)))
+SymTable
+a: 0
+v: 0
+Out:
+FileTable:
+ExeStack:
+a=2
+if(a == 2) then(print(true)) else(print(false))
+SymTable
+a: 0
+v: 0
+Out:
+FileTable:
+ExeStack:
+if(a == 2) then(print(true)) else(print(false))
+SymTable
+a: 2
+v: 0
+Out:
+FileTable:
+ExeStack:
+print(true)
+SymTable
+a: 2
+v: 0
+Out:
+FileTable:
+ExeStack:
+SymTable
+a: 2
+v: 0
+Out:
+true
+FileTable:
